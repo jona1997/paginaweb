@@ -1,0 +1,1192 @@
+         <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALMATEC | Tecnología, sostenibilidad y desarrollo</title>
+    <meta name="description" content="Palmatec Corporation de Costa Rica S.A. Producción responsable de aceite de palma, sostenibilidad y desarrollo de nuestra cadena de suministro.">
+    <meta name="theme-color" content="#004085">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --verde-palma: #76BC21;
+            --verde-oscuro: #4F8F17;
+            --azul-palmatec: #004085;
+            --azul-oscuro: #002B5B;
+            --azul-medio: #0067A8;
+            --blanco: #FFFFFF;
+            --gris-fondo: #F5F7F9;
+            --gris-claro: #EEF2F5;
+            --gris-texto: #667085;
+            --texto: #1D2939;
+            --sombra: 0 12px 35px rgba(0, 43, 91, 0.10);
+            --sombra-hover: 0 18px 45px rgba(0, 43, 91, 0.16);
+            --radio: 18px;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--texto);
+            background: var(--blanco);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(92%, var(--max-width));
+            margin: auto;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 3px 20px rgba(0,0,0,0.08);
+            transition: all .3s ease;
+        }
+
+        .header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo img {
+            width: 165px;
+        }
+
+        /* NAVIGATION */
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav a {
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--azul-oscuro);
+            transition: .3s ease;
+        }
+
+        .nav a:not(.btn-nav)::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 3px;
+            background: var(--verde-palma);
+            border-radius: 10px;
+            transition: width .3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--verde-oscuro);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 45px;
+            height: 45px;
+            border: none;
+            background: var(--gris-claro);
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--azul-oscuro);
+            font-size: 20px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 760px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(0,43,91,.93) 0%, rgba(0,64,133,.82) 45%, rgba(0,43,91,.30) 100%), url(Fondo.jpeg") center/cover no-repeat;
+            color: white;
+        }
+
+        .hero-content {
+            padding-top: 80px;
+            max-width: 720px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.08;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--verde-palma);
+        }
+
+        .hero p {
+            font-size: 1.16rem;
+            max-width: 680px;
+            color: rgba(255,255,255,.9);
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* BOTONES */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .btn-primary {
+            background: var(--verde-palma);
+            color: white;
+            box-shadow: 0 8px 25px rgba(118,188,33,.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--verde-oscuro);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,.55);
+            color: white;
+            background: rgba(255,255,255,.08);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--azul-oscuro);
+        }
+
+        /* INDICADORES */
+        .stats {
+            position: relative;
+            margin-top: -70px;
+            z-index: 20;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            background: white;
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            overflow: hidden;
+        }
+
+        .stat {
+            padding: 30px 20px;
+            text-align: center;
+            border-right: 1px solid var(--gris-claro);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-icon {
+            font-size: 26px;
+            color: var(--verde-palma);
+            margin-bottom: 8px;
+        }
+
+        .stat h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-palmatec);
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .stat p {
+            color: var(--gris-texto);
+            font-size: 14px;
+        }
+
+        /* SECCIONES */
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-light {
+            background: var(--gris-fondo);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 55px;
+        }
+
+        .section-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--verde-oscuro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem,4vw,2.8rem);
+            line-height: 1.2;
+            color: var(--azul-oscuro);
+            margin-bottom: 18px;
+        }
+
+        .section-title span {
+            color: var(--verde-palma);
+        }
+
+        .section-description {
+            color: var(--gris-texto);
+            font-size: 17px;
+        }
+
+        /* NOSOTROS */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 25px;
+            box-shadow: var(--sombra);
+        }
+
+        .about-text h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-oscuro);
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            color: var(--verde-palma);
+        }
+
+        .about-text p {
+            color: var(--gris-texto);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .mission-vision-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--sombra);
+            border-top: 4px solid var(--azul-palmatec);
+        }
+
+        .mv-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-palmatec);
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .mv-card p {
+            color: var(--gris-texto);
+            font-size: 15px;
+        }
+
+        /* VALORES */
+        .values-section {
+            width: 100%;
+            text-align: center;
+            padding: 60px 0;
+            background: var(--gris-fondo);
+            border-radius: 25px;
+            margin-top: 50px;
+        }
+
+        .values-section .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .values-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .values-image-container img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            box-shadow: var(--sombra);
+        }
+
+        /* PRODUCTOS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+            border-radius: 22px;
+            box-shadow: var(--sombra);
+            background: var(--azul-oscuro);
+        }
+
+        .product-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .product-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px;
+            background: linear-gradient(transparent 20%, rgba(0,43,91,.92) 100%);
+            color: white;
+        }
+
+        .product-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            background: var(--verde-palma);
+            font-size: 23px;
+        }
+
+        .product-overlay h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .product-overlay p {
+            color: rgba(255,255,255,.82);
+            margin-bottom: 18px;
+        }
+
+        .product-link {
+            color: #DDF5BE;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* SOSTENIBILIDAD */
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .sustainability-card {
+            padding: 32px 25px;
+            background: white;
+            border-radius: 18px;
+            border: 1px solid #E7ECF1;
+            transition: .3s ease;
+        }
+
+        .sustainability-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--sombra-hover);
+            border-color: transparent;
+        }
+
+        .sustainability-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            border-radius: 16px;
+            background: #EDF8E2;
+            color: var(--verde-oscuro);
+            font-size: 25px;
+        }
+
+        .sustainability-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-oscuro);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .sustainability-card p {
+            color: var(--gris-texto);
+            font-size: 14px;
+        }
+
+        /* POR QUÉ ELEGIRNOS (ESTILO INTEGRADO Y PROFESIONAL) */
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .why-choose-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: var(--sombra);
+            border-left: 4px solid var(--verde-palma);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            gap: 22px;
+            align-items: flex-start;
+        }
+
+        .why-choose-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .why-choose-card.full-width {
+            grid-column: span 2;
+            max-width: 650px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .why-choose-icon {
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: #EDF8E2;
+            color: var(--verde-oscuro);
+            font-size: 24px;
+        }
+
+        .why-choose-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-palmatec);
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .why-choose-content p {
+            color: var(--gris-texto);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* CONTACTO */
+        .contact-section {
+            background: var(--gris-fondo);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 6px 25px rgba(0,0,0,.05);
+        }
+
+        .contact-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-oscuro);
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #EDF8E2;
+            color: var(--verde-oscuro);
+        }
+
+        .contact-item strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-oscuro);
+            font-size: 14px;
+        }
+
+        .contact-item span {
+            color: var(--gris-texto);
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(100deg, var(--azul-palmatec), var(--azul-oscuro));
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,.8);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #001F42;
+            color: white;
+            padding: 65px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 45px;
+        }
+
+        .footer-logo img {
+            width: 165px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-col p {
+            color: rgba(255,255,255,.6);
+            font-size: 14px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde-palma);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.65);
+            font-size: 14px;
+            transition: .3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            text-align: center;
+            color: rgba(255,255,255,.45);
+            font-size: 13px;
+        }
+
+        .back-top {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--verde-palma);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,.18);
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease;
+            z-index: 900;
+        }
+
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .nav { gap: 15px; }
+            .nav a { font-size: 12px; }
+            .about-grid, .contact-grid, .mission-vision-container, .why-choose-grid { grid-template-columns: 1fr; }
+            .why-choose-card.full-width { grid-column: span 1; max-width: 100%; }
+            .sustainability-grid { grid-template-columns: repeat(2,1fr); }
+            .footer-grid { grid-template-columns: repeat(2,1fr); }
+            .about-image { max-width: 700px; margin: auto; }
+        }
+
+        @media (max-width: 760px) {
+            .header-inner { min-height: 70px; }
+            .logo img { width: 140px; }
+            .menu-toggle { display: block; }
+            .nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px;
+                background: white;
+                box-shadow: 0 15px 25px rgba(0,0,0,.1);
+            }
+            .nav.active { display: flex; }
+            .nav a { padding: 12px 5px; font-size: 14px; }
+            .hero { min-height: 680px; }
+            .hero-content { padding-top: 70px; }
+            .hero h1 { font-size: 2.4rem; }
+            .stats { margin-top: -40px; }
+            .stats-grid { grid-template-columns: repeat(2,1fr); }
+            .stat:nth-child(2) { border-right: none; }
+            .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid var(--gris-claro); }
+            .section { padding: 70px 0; }
+            .about-text h2 { font-size: 30px; }
+            .about-image img { height: 380px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .sustainability-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container header-inner">
+        <a href="#inicio" class="logo">
+            <img src="https://wppalmatec.azurewebsites.net/wp-content/uploads/2022/07/1-palmateclogo.png" alt="Palmatec Corporation de Costa Rica">
+        </a>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="nav" id="mainNav">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#productos">Productos</a>
+            <a href="#sostenibilidad">Sostenibilidad</a>
+            <a href="politicas.html">Políticas</a>
+            <a href="PQRS.html">PQRS</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+    <div class="container">
+        <div class="hero-content">
+            <h1>
+                Impulsamos el desarrollo sostenible
+                <span>de la palma aceitera.</span>
+            </h1>
+            <p>
+                En Palmatec Corporation de Costa Rica S.A. transformamos la fruta de palma aceitera en productos de calidad, integrando innovación, eficiencia y sostenibilidad para generar valor junto a nuestros productores y contribuir al desarrollo de la Zona Sur de Costa Rica.
+            </p>
+            <div class="hero-buttons">
+                <a href="#nosotros" class="btn btn-primary">
+                    Conozca más sobre nosotros
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#productos" class="btn btn-outline">
+                    Ver productos (CPO y PKO)
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INDICADORES -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
+                <h3>100%</h3>
+                <p>Calidad de Exportación</p>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fa-solid fa-seedling"></i></div>
+                <h3>+10</h3>
+                <p>Años de trayectoria</p>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h3>Sostenible</h3>
+                <p>Procesos responsables</p>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
+                <h3>Compromiso</h3>
+                <p>Cadena de valor sólida</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="section" id="nosotros">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="historia.jpg" alt="Nuestra empresa">
+            </div>
+            <div class="about-text">
+                <div class="section-label">Sobre Nosotros</div>
+                <h2>Nuestra <span>Historia</span></h2>
+                <p>
+                    Palmatec Corporation de Costa Rica S.A. nace con el propósito de contribuir al desarrollo de la actividad palmera y al aprovechamiento industrial de la fruta de palma aceitera en la Zona Sur de Costa Rica.</p>
+
+<p>El proyecto inició su desarrollo en 2007, con la creación de un centro de acopio en Caracol de la Vaca, Laurel de Corredores, y posteriormente avanzó hacia la construcción de la planta extractora. En 2008, PALMATEC fue incorporada al Régimen de Zonas Francas y, en 2010, inició sus operaciones.
+</p>
+                <p>
+                    Nuestro crecimiento ha estado guiado por la mejora continua, el respeto por las comunidades vecinas y la integración de prácticas sostenibles en cada etapa de nuestra operación.</p>               
+
+ <p>Desde sus inicios, la empresa ha evolucionado junto con la actividad palmera de la región, pasando de procesar principalmente fruta de operaciones vinculadas al proyecto a establecer una relación cercana con productores independientes de la Zona Sur. </p>
+
+<p>Actualmente, PALMATEC se dedica al procesamiento de fruta de palma aceitera para la obtención de aceite crudo de palma y aceite de palmiste, manteniendo como pilares la calidad, la trazabilidad, la innovación y la sostenibilidad.</p>
+
+<p>A través del acompañamiento y la asistencia a los productores, PALMATEC busca fortalecer una cadena de valor responsable, promoviendo buenas prácticas agrícolas, el desarrollo productivo y el compromiso con el bienestar de las comunidades y el medio ambiente.</p>
+
+<p>Más de una década creciendo junto a nuestros productores y la Zona Sur de Costa Rica.</p>
+
+
+            </div>
+        </div>
+
+        <div class="mission-vision-container">
+            <div class="mv-card">
+                <h3><i class="fa-solid fa-bullseye" style="color: var(--verde-palma); margin-right: 10px;"></i>Misión</h3>
+                <p>Procesar y comercializar productos derivados de la palma de alta calidad bajo estrictos estándares de sostenibilidad, eficiencia y seguridad, generando un valor agregado constante para nuestros clientes, colaboradores y la cadena de suministro.</p>
+            </div>
+            <div class="mv-card">
+                <h3><i class="fa-solid fa-eye" style="color: var(--verde-palma); margin-right: 10px;"></i>Visión</h3>
+                <p>Ser reconocidos internacionalmente como una empresa líder e innovadora en la industria de la palma, destacada por su compromiso ambiental, su trazabilidad transparente y su contribución activa al desarrollo sostenible.</p>
+            </div>
+        </div>
+
+        <div class="values-section">
+            <h2 class="section-title">Nuestros <span>Valores</span></h2>
+            <div class="values-image-container">
+                <img src="Valores.png" alt="Valores Corporativos">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="section section-light" id="productos">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Nuestros Productos</div>
+            <h2 class="section-title">Exportación de <span>CPO y PKO</span></h2>
+            <p class="section-description">
+                Ofrecemos al mercado internacional derivados del procesamiento de la palma africana con altos estándares de calidad, pureza y trazabilidad, exportados a diversos países.
+            </p>
+        </div>
+
+        <div class="products-grid">
+            <article class="product-card">
+                <img src="CPO.png" alt="Aceite Crudo de Palma (CPO)">
+                <div class="product-overlay">
+                    <div class="product-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <h3>Aceite Crudo de Palma (CPO)</h3>
+                    <p>Producto de alta demanda global obtenido mediante la extracción del mesocarpio del fruto de la palma africana, listo para su exportación y múltiples usos industriales.</p>
+                    <a href="#contacto" class="product-link">Consultar disponibilidad de exportación →</a>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="PKO.png" alt="Aceite de Coquito (PKO)">
+                <div class="product-overlay">
+                    <div class="product-icon"><i class="fa-solid fa-circle"></i></div>
+                    <h3>Aceite de Coquito (PKO)</h3>
+                    <p>Aceite de alta calidad extraído de la semilla o almendra del fruto de la palma, altamente valorado y exportado para la industria alimentaria y oleoquímica internacional.</p>
+                    <a href="#contacto" class="product-link">Consultar disponibilidad de exportación →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- SOSTENIBILIDAD -->
+<section class="section" id="sostenibilidad">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Nuestro compromiso</div>
+            <h2 class="section-title">Sostenibilidad como parte de <span>nuestro trabajo.</span></h2>
+            <p class="section-description">Promovemos prácticas responsables que consideran el ambiente, las personas, los derechos humanos y nuestra cadena de suministro.</p>
+        </div>
+        <div class="sustainability-grid">
+            <div class="sustainability-card">
+                <div class="sustainability-icon"><i class="fa-solid fa-tree"></i></div>
+                <h3>Medio ambiente</h3>
+                <p>Protección de los recursos naturales, prevención de la contaminación y conservación.</p>
+            </div>
+            <div class="sustainability-card">
+                <div class="sustainability-icon"><i class="fa-solid fa-people-group"></i></div>
+                <h3>Derechos humanos</h3>
+                <p>Promovemos respeto, igualdad, dignidad y condiciones laborales responsables.</p>
+            </div>
+            <div class="sustainability-card">
+                <div class="sustainability-icon"><i class="fa-solid fa-seedling"></i></div>
+                <h3>Producción responsable</h3>
+                <p>Impulsamos buenas prácticas y mejora continua en nuestra cadena de suministro.</p>
+            </div>
+            <div class="sustainability-card">
+                <div class="sustainability-icon"><i class="fa-solid fa-route"></i></div>
+                <h3>Trazabilidad</h3>
+                <p>Fortalecemos el seguimiento y la transparencia de nuestra cadena de suministro.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS (DISEÑO INTEGRADO) -->
+<section class="section section-light" id="por-que-elegirnos">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Ventajas Competitivas</div>
+            <h2 class="section-title">Por qué <span>elegirnos</span></h2>
+            <p class="section-description">Descubra los pilares que hacen de Palmatec su mejor aliado estratégico en el sector agroindustrial.</p>
+        </div>
+
+        <div class="why-choose-grid">
+            <!-- Tarjeta 1 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="why-choose-content">
+                    <h3>Atención al productor</h3>
+                    <p>Brindamos atención al cliente sin excepción alguna, sin cita previa, de manera presencial en las instalaciones de la empresa o por medio de una llamada o un correo, siendo atendido(a) de la manera más cordial y servicial.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <div class="why-choose-content">
+                    <h3>Aseguramiento del origen de la fruta</h3>
+                    <p>Nuestras relaciones comerciales se caracterizan por ser expeditas, sencillas y amigables. Solicitamos la información relevante para asegurar el origen de la fruta y documentar adecuadamente los procesos.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                <div class="why-choose-content">
+                    <h3>Pago de la fruta</h3>
+                    <p>Una vez que la fruta de palma ha sido entregada en nuestras instalaciones, se realiza el pago correspondiente el mismo día.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="why-choose-content">
+                    <h3>Transparencia de procesos</h3>
+                    <p>En todo momento el productor puede solicitar información de calidad de fruta, precios, procedimiento de pesaje, entre otras inquietudes que se le presenten.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5 (Centrada al fondo) -->
+            <div class="why-choose-card full-width">
+                <div class="why-choose-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="why-choose-content">
+                    <h3>Mejora de tiempos de espera</h3>
+                    <p>Revisamos continuamente nuestros procesos llevando registros de horas de ingreso y salida de los productores, con el objetivo de optimizar y mejorar constantemente los tiempos de espera en el proceso de pesaje.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container">
+        <h2>¿Quiere conocer más sobre Palmatec?</h2>
+        <p>Póngase en contacto con nuestro equipo para consultas de exportación de CPO y PKO, o información institucional.</p>
+        <div class="hero-buttons" style="justify-content:center;">
+            <a href="#contacto" class="btn btn-primary">
+                Contáctenos
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+           
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contact-section" id="contacto">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Estamos para servirle</div>
+            <h2 class="section-title">Póngase en <span>contacto</span></h2>
+            <p class="section-description">Estamos disponibles para atender consultas comerciales, de exportación y servicios generales.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Información de contacto</h3>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Ubicación</strong>
+                        <span>Caracol de la Vaca, Laurel, Corredores, Puntarenas</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <span>+506 2783-9550</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Correo electrónico</strong>
+                        <span>info@palmatec.cr</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h3>Horario de atención</h3>
+                <div class="contact-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <div>
+                        <strong>Lunes a viernes</strong>
+                        <span>7:00 AM - 5:00 PM</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <div>
+                        <strong>Sábado</strong>
+                        <span>7:00 AM - 12:00 MD</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <div>
+                        <strong>Domingo</strong>
+                        <span>Cerrado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-logo">
+                <img src="https://wppalmatec.azurewebsites.net/wp-content/uploads/2022/07/1-palmateclogo.png" alt="Palmatec">
+                <p>Tecnología e innovación al servicio del productor</p>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Sostenibilidad y Ventajas</h4>
+                <ul class="footer-links">
+                    <li><a href="#sostenibilidad">Nuestro compromiso</a></li>
+                    <li><a href="politicas.html">Políticas</a></li>
+                    <li><a href="#sostenibilidad">Trazabilidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 PALMATEC Corporation de Costa Rica S.A. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#inicio" class="back-top" id="backTop">
+    <i class="fa-solid fa-arrow-up"></i>
+</a>
+
+<!-- JAVASCRIPT -->
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", function() {
+        mainNav.classList.toggle("active");
+        const icon = menuToggle.querySelector("i");
+        if(mainNav.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+        } else {
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        }
+    });
+
+    document.querySelectorAll(".nav a").forEach(link => {
+        link.addEventListener("click", () => {
+            mainNav.classList.remove("active");
+            const icon = menuToggle.querySelector("i");
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        });
+    });
+
+    const backTop = document.getElementById("backTop");
+    window.addEventListener("scroll", () => {
+        if(window.scrollY > 500) {
+            backTop.classList.add("show");
+        } else {
+            backTop.classList.remove("show");
+        }
+    });
+
+    const header = document.querySelector(".header");
+    window.addEventListener("scroll", () => {
+        if(window.scrollY > 50) {
+            header.style.boxShadow = "0 5px 25px rgba(0,43,91,.12)";
+        } else {
+            header.style.boxShadow = "0 3px 20px rgba(0,0,0,.08)";
+        }
+    });
+</script>
+
+</body>
+</html>
