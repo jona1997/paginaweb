@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -64,6 +64,19 @@
 
     .nav-links a:hover {
       color: var(--verde-oscuro);
+    }
+
+    /* Botón Hamburguesa */
+    .menu-toggle {
+      display: none;
+      width: 45px;
+      height: 45px;
+      border: none;
+      background: var(--gris-claro);
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--azul-oscuro);
+      font-size: 20px;
     }
 
     /* Hero Banner */
@@ -291,7 +304,22 @@
     }
 
     @media (max-width: 950px) {
-      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 15px 25px rgba(0,0,0,.1);
+        border-bottom: 1px solid var(--gris-claro);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { padding: 12px 5px; font-size: 14px; }
       .contact-grid { grid-template-columns: 1fr; }
       .grid-3 { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -304,7 +332,10 @@
     <a href="pagina.html#inicio">
       <img src="https://wppalmatec.azurewebsites.net/wp-content/uploads/2022/07/1-palmateclogo.png" alt="Palmatec Logo">
     </a>
-    <nav class="nav-links">
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <nav class="nav-links" id="mainNav">
       <a href="index.html#inicio">Inicio</a>
       <a href="index.html#nosotros">Nosotros</a>
       <a href="index.html#productos">Productos</a>
@@ -464,6 +495,30 @@
   </footer>
 
   <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", function() {
+        mainNav.classList.toggle("active");
+        const icon = menuToggle.querySelector("i");
+        if(mainNav.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+        } else {
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        }
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            mainNav.classList.remove("active");
+            const icon = menuToggle.querySelector("i");
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        });
+    });
+
     function toggleAnonimo(isAnonimo) {
       const nombreInput = document.getElementById('nombre');
       const emailInput = document.getElementById('email');
